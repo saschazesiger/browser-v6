@@ -30,7 +30,7 @@ RUN mkdir /browser && \
 	chown -R "browser" /browser && \
 	ulimit -n 2048
 
-COPY /goproxy /opt/scripts/goproxy
+COPY /scripts /opt/scripts/
 
 COPY /conf/ /etc/.fluxbox/
 RUN chmod -R 770 /opt/scripts/

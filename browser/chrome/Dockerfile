@@ -4,9 +4,9 @@ LABEL org.opencontainers.image.authors="janis@js0.ch"
 LABEL org.opencontainers.image.source="https://github.com/saschazesiger/"
 
 ENV URL=https://browser.lol/redirect-url-to
+ENV WEBHOOK=https://browser.lol/example-webhook
 
-COPY /scripts /opt/scripts
-COPY /static /opt/scripts/static
+COPY /start-server.sh /opt/scripts/start-server.sh
 
 
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/chrome.deb
