@@ -1,0 +1,17 @@
+FROM browser_base
+
+LABEL org.opencontainers.image.authors="janis@js0.ch"
+LABEL org.opencontainers.image.source="https://github.com/saschazesiger/"
+
+ENV URL=https://browser.lol/redirect-url-to
+
+COPY /scripts /opt/scripts
+COPY /static /opt/scripts/static
+
+
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/chrome.deb
+RUN dpkg -i /tmp/chrome.deb || apt-get install -yf
+RUN rm /tmp/chrome.deb
+
+#Server Start
+CMD ["bash", "/opt/scripts/start.sh"]
