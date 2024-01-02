@@ -52,8 +52,7 @@
 
     <script src="app/error-handler.js"></script>
     <script type="module" crossorigin="anonymous" src="app/ui.js"></script>
-    <script type="module" crossorigin="anonymous" src="../jsmpeg/jsmpeg.min.js"></script>
-    <script type="module" crossorigin="anonymous" src="../jsmpeg/app.js"></script>
+
 </head>
 
 <body>
@@ -342,23 +341,23 @@
     <source src="app/sounds/bell.oga" type="audio/ogg">
     <source src="app/sounds/bell.mp3" type="audio/mpeg">
 </audio>
-</body>
 <script type="text/javascript" src="../jsmpeg/jsmpeg.min.js"></script>
 <script>
+    function playAudio(){
     var canvas = document.getElementById('video-canvas');
     var url = 'ws://' + window.location.hostname + ":" + window.location.port + '/audio';
     var player = new JSMpeg.Player(url, {
-        canvas: canvas, audioBufferSize: 128 * 64,
-        autoplay: true, pauseWhenHidden: false,
-    });
+                    canvas: canvas,
+                    audioBufferSize: 128*1024,
+                    autoplay: true,
+                    pauseWhenHidden: false,
+                    video: false,
+                    maxAudioLag: 0.25,
+                });
     let isInit = false;
-    document.addEventListener('touchstart', function () {
-        if (isInit) {
-            return
-        }
-        isInit = true;
-        player.audioOut.unlock(function () {
-        });
-    });
+            }
 </script>
+<button onclick="playAudio()" style="position:fixed;top:0px;left:0px;">startaudio</button>
+</body>
+
 </html>

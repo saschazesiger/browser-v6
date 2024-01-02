@@ -21,10 +21,11 @@ pulseaudio --start --exit-idle-time=-1
 HOME=$HOME/pulse pactl load-module module-native-protocol-tcp
 PULSE_PID=$(ps --no-headers -C pulseaudio -o pid | sed -r 's/( )+//g')
 
-nohup ffmpeg -y -nostdin -f alsa -i pulse  -f mpegts  -codec:a mp2 udp://localhost:1234 &
+nohup ffmpeg -y -nostdin -f alsa -i pulse  -f mpegts  -codec:a mp2 -ar 44100 -ac 2 -b:a 128k udp://localhost:1234 &
 #ffmpeg -f alsa -i pulse -f mpegts -codec:a mp2 -ar 44100 -ac 2 -b:a 128k udp://localhost:10000 &
 
-/opt/scripts/goproxy &
+cd /opt/scripts/
+./goproxy &
 
 echo "---Starting TurboVNC server---"
 vncserver -geometry 1024x768 -depth 16 :99 -rfbport 5900 -noxstartup -securitytypes none 2>/dev/null

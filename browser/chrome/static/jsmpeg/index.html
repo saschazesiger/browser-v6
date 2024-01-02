@@ -13,11 +13,14 @@
         var url = 'ws://' + window.location.hostname + ":" + window.location.port + '/audio';
         var player = new JSMpeg.Player(url, {
             canvas: canvas,
-            audioBufferSize: 128 * 1024,
+            chunkSize: 128 * 128,
+            audioBufferSize: 64 * 128,
             autoplay: true,
-            pauseWhenHidden: false,
+            pauseWhenHidden: true,
             video: false,
-            maxAudioLag: 0.25,
+            disableGl: true,
+            disableWebAssembly: true,
+            maxAudioLag: 0.5,
         });
         document.addEventListener('touchstart', function () {
             player.audioOut.unlock(function () {
