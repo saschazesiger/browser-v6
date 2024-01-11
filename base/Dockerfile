@@ -32,7 +32,7 @@ RUN mkdir /browser && \
 
 COPY /scripts /opt/scripts/
 
-COPY /conf/ /etc/.fluxbox/
+
 RUN chmod -R 770 /opt/scripts/
 
 
