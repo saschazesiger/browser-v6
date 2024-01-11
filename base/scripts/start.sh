@@ -14,6 +14,7 @@ echo "---Taking ownership of data...---"
 chown -R root:100 /opt/scripts
 chmod -R 750 /opt/scripts
 chown -R 99:100 /browser
+chown -R 99:100 /browserdata
 
 echo "---Starting...---"
 term_handler() {

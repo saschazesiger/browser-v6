@@ -23,6 +23,7 @@ RUN cd /tmp && \
 
 RUN mkdir /browser && \
 	mkdir /opt/scripts && \
+	mkdir /app && \
 	useradd -d /browser -s /bin/bash "browser" && \
 	chown -R "browser" /browser && \
 	ulimit -n 2048
