@@ -8,7 +8,7 @@ LABEL org.opencontainers.image.source="https://github.com/saschazesiger/"
 
 RUN  echo "deb http://deb.debian.org/debian bullseye contrib non-free" >> /etc/apt/sources.list && \
 	apt-get update && \
-	apt -qqy install --no-install-recommends wget procps xvfb wmctrl x11vnc fluxbox screen libxcomposite-dev libxcursor1 xauth python3 supervisor dbus-x11 x11-xserver-utils curl unzip gettext pulseaudio pavucontrol trickle lame ffmpeg fonts-takao fonts-arphic-uming libgtk-3-0 libgconf-2-4 libnss3 fonts-liberation libasound2 libcurl3-gnutls libcurl3-nss libcurl4 libgbm1 libnspr4 libnss3 libu2f-udev xdg-utils && \
+	apt -qqy install --no-install-recommends feh wget procps xvfb wmctrl x11vnc fluxbox screen libxcomposite-dev libxcursor1 xauth python3 supervisor dbus-x11 x11-xserver-utils curl unzip gettext pulseaudio pavucontrol trickle lame ffmpeg fonts-takao fonts-arphic-uming libgtk-3-0 libgconf-2-4 libnss3 fonts-liberation libasound2 libcurl3-gnutls libcurl3-nss libcurl4 libgbm1 libnspr4 libnss3 libu2f-udev xdg-utils && \
 	apt-get -y install --reinstall ca-certificates && \
 	rm -rf /var/lib/apt/lists/*
 
@@ -20,9 +20,6 @@ RUN cd /tmp && \
 	rm -rf /opt/TurboVNC /tmp/turbovnc.deb && \
 	sed -i '/# $enableHTTP = 1;/c\$enableHTTP = 0;' /etc/turbovncserver.conf
 
-COPY /x11vnc /usr/bin/x11vnc
-RUN chmod 751 /usr/bin/x11vnc
-
 
 RUN mkdir /browser && \
 	mkdir /opt/scripts && \
@@ -32,8 +29,9 @@ RUN mkdir /browser && \
 
 COPY /scripts /opt/scripts/
 
-
+COPY /fluxbox/ /etc/.fluxbox/
 RUN chmod -R 770 /opt/scripts/
+RUN mv /etc/.fluxbox/theme.cfg /usr/share/fluxbox/styles/Squared_for_Debian/theme.cfg -f
 
 
 RUN adduser root pulse-access
