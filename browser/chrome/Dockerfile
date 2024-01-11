@@ -5,6 +5,7 @@ LABEL org.opencontainers.image.source="https://github.com/saschazesiger/"
 
 ENV URL=https://browser.lol/redirect-url-to
 ENV WEBHOOK=https://browser.lol/example-webhook
+ENV BANDWIDTH=15000
 
 COPY /start-server.sh /opt/scripts/start-server.sh
 
