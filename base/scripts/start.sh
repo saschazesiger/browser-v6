@@ -22,7 +22,15 @@ term_handler() {
 	exit 143;
 }
 
-#rm -rf /var/run/pulse /var/lib/pulse /root/.config/pulse
+echo "---Checking for old logfiles---"
+find /browser -name "XvfbLog.*" -exec rm -f {} \;
+find /browser -name "x11vncLog.*" -exec rm -f {} \;
+echo "---Checking for old display lock files---"
+rm -rf /tmp/.X99*
+rm -rf /tmp/.X11*
+rm -rf /browser/.vnc/*.log /browser/.vnc/*.pid /browser/Singleton*
+chmod -R /browser /browser
+screen -wipe 2&>/dev/null
 
 trap 'kill ${!}; term_handler' SIGTERM
 su browser -c "/opt/scripts/start-server.sh" &
