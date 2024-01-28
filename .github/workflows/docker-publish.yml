@@ -5,39 +5,37 @@ on:
     branches: [main]
   workflow_dispatch:
 
+    
 jobs:
-  build-and-push-docker-image:
-    name: Build Docker image and push to repositories
+  docker:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Login to DockerHub
-        uses: docker/login-action@v2
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
       -
         name: Build Base
         uses: docker/build-push-action@v5
         with:
           context: ./base
           push: false
-          tags: j4n11s/browser-v6:base
-
-      - name: Build Chrome Image
-        uses: docker/build-push-action@v2
+          tags: base
+      -
+        name: Build Chrome
+        uses: docker/build-push-action@v5
         with:
           context: ./browser/chrome
+          push: true
           tags: j4n11s/browser-v6:chrome
-          push: ${{ github.ref == 'refs/heads/main' }}
-
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
