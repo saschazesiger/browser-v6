@@ -39,10 +39,34 @@ jobs:
           context: ./base
           push: true
           tags: localhost:5000/j4n11s/browser-v6:base
-      -
-        name: Build Chrome
+
+
+
+      - name: Build Brave
+        uses: docker/build-push-action@v5
+        with:
+          context: ./browser/brave
+          push: true
+          tags: j4n11s/browser-v6:brave
+        
+      - name: Build Chrome
         uses: docker/build-push-action@v5
         with:
           context: ./browser/chrome
           push: true
           tags: j4n11s/browser-v6:chrome
+
+
+      - name: Build Firefox
+        uses: docker/build-push-action@v5
+        with:
+          context: ./browser/firefox
+          push: true
+          tags: j4n11s/browser-v6:firefox
+
+      - name: Build Tor
+        uses: docker/build-push-action@v5
+        with:
+          context: ./browser/tor
+          push: true
+          tags: j4n11s/browser-v6:tor
