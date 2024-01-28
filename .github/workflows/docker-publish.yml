@@ -24,11 +24,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-      - name: Build Base Image
-        uses: docker/build-push-action@v2
+      -
+        name: Build Base
+        uses: docker/build-push-action@v5
         with:
           context: ./base
-          tags: base
+          push: false
+          tags: j4n11s/browser-v6:base
 
       - name: Build Chrome Image
         uses: docker/build-push-action@v2
