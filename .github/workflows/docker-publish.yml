@@ -32,6 +32,7 @@ jobs:
           context: ./base
           push: false
           tags: base
+          load: true
       -
         name: Build Chrome
         uses: docker/build-push-action@v5
