@@ -31,7 +31,7 @@ jobs:
         with:
           context: ./base
           push: false
-          tags: base
+          tags: local/base:latest
           load: true
       -
         name: Build Chrome

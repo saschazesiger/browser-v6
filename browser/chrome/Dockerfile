@@ -1,4 +1,4 @@
-FROM base
+FROM local/base:latest
 
 LABEL org.opencontainers.image.authors="janis@js0.ch"
 LABEL org.opencontainers.image.source="https://github.com/saschazesiger/"
