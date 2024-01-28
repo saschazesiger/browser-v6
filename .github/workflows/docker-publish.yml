@@ -29,7 +29,6 @@ jobs:
         with:
           context: ./base
           tags: base
-          push: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Build Chrome Image
         uses: docker/build-push-action@v2
