@@ -38,7 +38,7 @@ jobs:
         with:
           context: ./base
           push: true
-          tags: localhost:5000/j4n11s/browser-v6:base
+          tags: localhost:5000/j4n11s/browser-v6-img:base
 
 
 
@@ -47,14 +47,14 @@ jobs:
         with:
           context: ./browser/brave
           push: true
-          tags: j4n11s/browser-v6:brave
+          tags: j4n11s/browser-v6-img:brave
         
       - name: Build Chrome
         uses: docker/build-push-action@v5
         with:
           context: ./browser/chrome
           push: true
-          tags: j4n11s/browser-v6:chrome
+          tags: j4n11s/browser-v6-img:chrome
 
 
       - name: Build Firefox
@@ -62,11 +62,11 @@ jobs:
         with:
           context: ./browser/firefox
           push: true
-          tags: j4n11s/browser-v6:firefox
+          tags: j4n11s/browser-v6-img:firefox
 
       - name: Build Tor
         uses: docker/build-push-action@v5
         with:
           context: ./browser/tor
           push: true
-          tags: j4n11s/browser-v6:tor
+          tags: j4n11s/browser-v6-img:tor
