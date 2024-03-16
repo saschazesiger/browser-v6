@@ -7,7 +7,7 @@ usermod -g 100 browser
 echo "---Setting umask to 000---"
 umask 000
 
-HOST=$(hostname)
+HOST=$(cat /hostname)
 MAX_TRIES=10
 tries=0
 
