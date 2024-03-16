@@ -8,28 +8,7 @@ echo "---Setting umask to 000---"
 umask 000
 
 HOST=$(cat /hostname)
-MAX_TRIES=10
-tries=0
-
-# Tries to send request to Server
-while [ $tries -lt $MAX_TRIES ]; do
-  tries=$((tries+1))
-  response=$(curl -s -d "{ \"status\": \"started\",\"serviceName\": \"$SERVICE_NAME\",\"host\": \"$HOST\" }" -H "Content-Type: application/json" $WEBHOOK_URL)
-
-  # If server is accessible and correct response
-if echo "$response" | grep -q "ok"; then
-    echo "Successfully sent Webhook"
-    break
-  else
-    echo "Request $tries/$MAX_TRIES failed to $WEBHOOK_URL. Response: $response"
-    sleep 2
-  fi
-
-  # Max retries reached without success
-  if [ $tries -eq $MAX_TRIES ]; then
-    echo "Max retries reached, canceling Request."
-  fi
-done
+curl -s -d "{ \"status\": \"started\",\"serviceName\": \"$SERVICE_NAME\",\"host\": \"$HOST\" }" -H "Content-Type: application/json" $WEBHOOK_URL
 
 echo "---Taking ownership of data...---"
 chown -R root:100 /opt/scripts
