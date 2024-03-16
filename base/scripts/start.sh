@@ -17,11 +17,11 @@ while [ $tries -lt $MAX_TRIES ]; do
   response=$(curl -s -d "{ \"status\": \"started\",\"serviceName\": \"$SERVICE_NAME\",\"host\": \"$HOST\" }" -H "Content-Type: application/json" $WEBHOOK_URL)
 
   # If server is accessible and correct response
-  if echo $response | grep -q '"status": "ok"'; then
+  if [ "$response" -eq 200 ]; then
     echo "Successfully sent Webhook"
     break
   else
-    echo "Request $tries/$MAX_TRIES failed to $WEBHOOK_URL"
+    echo "Request $tries/$MAX_TRIES failed to $WEBHOOK_URL. Response: $response"
     sleep 1
   fi
 
