@@ -3,6 +3,8 @@ FROM debian:stable-slim
 ENV TURBOVNC_V="3.0.3"
 ENV SERVICE_NAME="UNDEFINED"
 ENV WEBHOOK_URL="http://localhost/"
+ENV URL=https://browser.lol/redirect-url-to
+ENV BANDWIDTH=15000
 
 LABEL org.opencontainers.image.authors="janis@js0.ch"
 LABEL org.opencontainers.image.source="https://github.com/saschazesiger/"

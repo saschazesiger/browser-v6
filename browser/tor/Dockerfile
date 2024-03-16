@@ -3,18 +3,11 @@ FROM localhost:5000/j4n11s/browser-v6:base
 LABEL org.opencontainers.image.authors="janis@js0.ch"
 LABEL org.opencontainers.image.source="https://github.com/saschazesiger/"
 
-ENV URL=https://browser.lol/redirect-url-to
-ENV WEBHOOK=https://browser.lol/example-webhook
-ENV BANDWIDTH=15000
-
 COPY /start-server.sh /opt/scripts/start-server.sh
 
-
+# ------------ Install Browser ------------
 RUN apt-get update && \
 	apt-get -y install --no-install-recommends xz-utils fonts-takao fonts-arphic-uming libgtk-3-0 libgconf-2-4 libnss3 fonts-liberation libasound2 libcurl3-gnutls libcurl3-nss libcurl4 libgbm1 libnspr4 libnss3 libu2f-udev xdg-utils jq
-
-
-
 RUN mkdir /tmp-profile && \
 	mkdir /browserdata && \
 	cd /browserdata && \
@@ -25,6 +18,7 @@ RUN mkdir /tmp-profile && \
 	cp -R /tmp-profile /browserdata/TorBrowser/Data/ && \
 	rm -f /browserdata/Tor-Browser.tar.xz && \
 	rm -rf /tmp-profile
+# ------------ End Install Browser ------------
 
 #Server Start
 CMD ["bash", "/opt/scripts/start.sh"]
