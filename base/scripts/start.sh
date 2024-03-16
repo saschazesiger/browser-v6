@@ -28,7 +28,6 @@ while [ $tries -lt $MAX_TRIES ]; do
   # Max retries reached without success
   if [ $tries -eq $MAX_TRIES ]; then
     echo "Max retries reached, canceling Request."
-    exit 1
   fi
 done
 
