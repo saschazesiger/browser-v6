@@ -7,7 +7,7 @@ on:
 
     
 jobs:
-  docker:
+  Update_Browsers_V6:
     runs-on: ubuntu-latest
     services:
       registry:
@@ -71,11 +71,6 @@ jobs:
           push: true
           tags: j4n11s/browser-v6-img:tor
 
-
-  notify_webhook:
-    needs: docker
-    runs-on: ubuntu-latest
-    steps:
       - name: Notify webhook
         run: |
           curl -X POST -H "Content-Type: application/json" -d '{"status":"updated", "hash":"MbERSlb4X589lFIImbKpK7aK5vf160i71S22M0scKhwsp7XLYT6ToeQ93otQw0C3"}' https://app.browser.lol/api/browser/update
