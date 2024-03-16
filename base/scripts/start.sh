@@ -8,7 +8,7 @@ echo "---Setting umask to 000---"
 umask 000
 
 HOST=$(cat /hostname)
-curl -s -d "{ \"status\": \"started\",\"serviceName\": \"$SERVICE_NAME\",\"host\": \"$HOST\" }" -H "Content-Type: application/json" $WEBHOOK_URL
+curl -s -d "{ \"status\": \"started\",\"serviceName\": \"$SERVICE_NAME\",\"host\": \"$HOST\" }" -H "Content-Type: application/json" $WEBHOOK_URL &
 
 echo "---Taking ownership of data...---"
 chown -R root:100 /opt/scripts
