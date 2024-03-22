@@ -56,7 +56,6 @@ jobs:
           push: true
           tags: j4n11s/browser-v6-img:chrome
 
-
       - name: Build Firefox
         uses: docker/build-push-action@v5
         with:
@@ -70,6 +69,20 @@ jobs:
           context: ./browser/tor
           push: true
           tags: j4n11s/browser-v6-img:tor
+
+      - name: Build Edge
+        uses: docker/build-push-action@v5
+        with:
+          context: ./browser/edge
+          push: true
+          tags: j4n11s/browser-v6-img:edge
+
+      - name: Build Opera
+        uses: docker/build-push-action@v5
+        with:
+          context: ./browser/opera
+          push: true
+          tags: j4n11s/browser-v6-img:opera
 
       - name: Notify webhook
         run: |
