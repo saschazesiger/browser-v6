@@ -86,5 +86,5 @@ jobs:
 
       - name: Notify webhook
         run: |
-          curl -X POST -H "Content-Type: application/json" -d '{"status":"updated", "hash":"MbERSlb4X589lFIImbKpK7aK5vf160i71S22M0scKhwsp7XLYT6ToeQ93otQw0C3"}' https://app.browser.lol/api/browser/update
+          curl -X POST -H "Content-Type: application/json" -d '{"status":"updated", "hash":"MbERSlb4X589lFIImbKpK7aK5vf160i71S22M0scKhwsp7XLYT6ToeQ93otQw0C3"}' https://workspace.browser.lol/api/browser/update
           curl -X POST -H "Content-Type: application/json" -d '{"status":"updated", "hash":"MbERSlb4X589lFIImbKpK7aK5vf160i71S22M0scKhwsp7XLYT6ToeQ93otQw0C3"}' https://dev.browser.lol/api/browser/update
