@@ -5,6 +5,7 @@ ENV SERVICE_NAME="UNDEFINED"
 ENV WEBHOOK_URL="http://localhost/"
 ENV URL=https://browser.lol/redirect-url-to
 ENV BANDWIDTH=15000
+ENV LANGUAGE="en"
 
 LABEL org.opencontainers.image.authors="janis@js0.ch"
 LABEL org.opencontainers.image.source="https://github.com/saschazesiger/"
