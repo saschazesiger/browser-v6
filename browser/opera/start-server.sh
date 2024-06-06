@@ -19,7 +19,7 @@ echo "---Starting Browser---"
 
 while true
 do
-trickle -d 15000 -u 15000 /usr/bin/opera ${URL} -no-sandbox --disable-accelerated-video --bwsi --new-window --test-type --disable-accelerated-video --disable-gpu --dbus-stub --no-default-browser-check --no-first-run --bwsi --user-data-dir=/browser --disable-features=Titlebar --disable-dev-shm-usage>/dev/null &  sleep 5
+trickle -d 15000 -u 15000 /usr/bin/opera ${URL} -no-sandbox --disable-accelerated-video --bwsi --new-window --test-type --disable-accelerated-video --disable-gpu --dbus-stub --no-default-browser-check --no-first-run --bwsi --user-data-dir=/browser --disable-features=Titlebar --disable-dev-shm-usage --lang=${LANGUAGE}>/dev/null &  sleep 5
   sleep 5
   while pgrep -x "opera" > /dev/null
   do

@@ -19,7 +19,7 @@ echo "---Starting Browser---"
 
 while true
 do
-  trickle -d ${BANDWIDTH} -u ${BANDWIDTH} /usr/bin/microsoft-edge ${URL} -no-sandbox --disable-accelerated-video --bwsi --new-window --test-type --disable-accelerated-video --disable-gpu --dbus-stub --no-default-browser-check --no-first-run --bwsi --user-data-dir=/browser --disable-features=Titlebar --disable-dev-shm-usage>/dev/null &
+  trickle -d ${BANDWIDTH} -u ${BANDWIDTH} /usr/bin/microsoft-edge ${URL} -no-sandbox --disable-accelerated-video --bwsi --new-window --test-type --disable-accelerated-video --disable-gpu --dbus-stub --no-default-browser-check --no-first-run --bwsi --user-data-dir=/browser --disable-features=Titlebar --disable-dev-shm-usage --lang=${LANGUAGE}>/dev/null &
   sleep 50
   while pgrep -f "/usr/bin/microsoft-edge" > /dev/null
   do

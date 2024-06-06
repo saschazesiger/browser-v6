@@ -18,7 +18,7 @@ screen -d -m env HOME=/etc /usr/bin/fluxbox
 echo "---Starting Browser---"
 
 while true; do
-  trickle -d ${BANDWIDTH} -u ${BANDWIDTH} /browserdata/start-tor-browser ${URL} --display=:99 --profile /browser --P browser --setDefaultBrowser --new-instance >/dev/null &
+  trickle -d ${BANDWIDTH} -u ${BANDWIDTH} /browserdata/start-tor-browser ${URL} --display=:99 --profile /browser --P browser --setDefaultBrowser --new-instance --lang=${LANGUAGE}>/dev/null &
   sleep 5
   while pgrep -f "/browserdata/start-tor-browser" > /dev/null
   do
