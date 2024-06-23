@@ -34,6 +34,11 @@ chmod -R /browser /browser
 screen -wipe 2&>/dev/null
 
 trap 'kill ${!}; term_handler' SIGTERM
+
+if [ -f /browserdata/TorBrowser/Tor/tor ]; then
+    /browserdata/TorBrowser/Tor/tor &
+fi
+
 su browser -c "/opt/scripts/start-server.sh" &
 killpid="$!"
 while true
