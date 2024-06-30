@@ -13,8 +13,8 @@ curl -s -d "{ \"status\": \"started\",\"serviceName\": \"$SERVICE_NAME\",\"host\
 echo "---Taking ownership of data...---"
 chown -R root:100 /opt/scripts
 chmod -R 750 /opt/scripts
-chown -R 99:100 /browser
-chown -R 99:100 /browserdata
+chown -R browser:browser /browser
+chown -R browser:browser /browserdata
 
 echo "---Starting...---"
 term_handler() {
@@ -30,14 +30,9 @@ echo "---Checking for old display lock files---"
 rm -rf /tmp/.X99*
 rm -rf /tmp/.X11*
 rm -rf /browser/.vnc/*.log /browser/.vnc/*.pid /browser/Singleton*
-chmod -R /browser /browser
 screen -wipe 2&>/dev/null
 
 trap 'kill ${!}; term_handler' SIGTERM
-
-if [ -f /browserdata/TorBrowser/Tor/tor ]; then
-    /browserdata/TorBrowser/Tor/tor &
-fi
 
 su browser -c "/opt/scripts/start-server.sh" &
 killpid="$!"

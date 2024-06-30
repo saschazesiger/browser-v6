@@ -1,8 +1,5 @@
 FROM localhost:5000/j4n11s/browser-v6:base
 
-LABEL org.opencontainers.image.authors="janis@js0.ch"
-LABEL org.opencontainers.image.source="https://github.com/saschazesiger/"
-
 COPY /start-server.sh /opt/scripts/start-server.sh
 
 # ------------ Install Browser ------------

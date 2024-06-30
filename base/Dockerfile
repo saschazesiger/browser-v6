@@ -7,10 +7,6 @@ ENV URL=https://browser.lol/redirect-url-to
 ENV BANDWIDTH=15000
 ENV LANGUAGE="en"
 
-LABEL org.opencontainers.image.authors="janis@js0.ch"
-LABEL org.opencontainers.image.source="https://github.com/saschazesiger/"
-
-
 RUN  echo "deb http://deb.debian.org/debian bullseye contrib non-free" >> /etc/apt/sources.list && \
 	apt-get update && \
 	apt-get -qqy install --no-install-recommends feh wget procps xvfb wmctrl x11vnc fluxbox screen libxcomposite-dev libxcursor1 xauth python3 supervisor dbus-x11 x11-xserver-utils curl unzip gettext pulseaudio pavucontrol trickle lame ffmpeg fonts-takao fonts-arphic-uming libgtk-3-0 libgconf-2-4 libnss3 fonts-liberation fonts-noto fonts-noto-cjk fonts-noto-color-emoji fonts-noto-mono fonts-arphic-ukai fonts-indic fonts-thai-tlwg libasound2 libcurl3-gnutls libcurl3-nss libcurl4 libgbm1 libnspr4 libnss3 libu2f-udev xdg-utils && \

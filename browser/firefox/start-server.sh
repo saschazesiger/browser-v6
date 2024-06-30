@@ -14,14 +14,10 @@ nohup ffmpeg -y -nostdin -f alsa -i pulse  -f mpegts  -codec:a mp2 -ar 44100 -ac
 vncserver -geometry 1024x768 -depth 16 :99 -rfbport 5900 -noxstartup -securitytypes none 2>/dev/null
 screen -d -m env HOME=/etc /usr/bin/fluxbox
 
-
-echo "---Starting Browser---"
-
 while true; do
   trickle -d ${BANDWIDTH} -u ${BANDWIDTH} /firefox/firefox ${URL} --display=:99 --profile /browser --P browser --setDefaultBrowser --new-instance --lang=${LANGUAGE}>/dev/null &
-  sleep 5
   while pgrep -f "/firefox/firefox" > /dev/null
   do
-    sleep 1
+    sleep 2
   done
 done
