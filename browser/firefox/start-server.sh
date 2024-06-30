@@ -15,9 +15,5 @@ vncserver -geometry 1024x768 -depth 16 :99 -rfbport 5900 -noxstartup -securityty
 screen -d -m env HOME=/etc /usr/bin/fluxbox
 
 while true; do
-  trickle -d ${BANDWIDTH} -u ${BANDWIDTH} /firefox/firefox ${URL} --display=:99 --profile /browser --P browser --setDefaultBrowser --new-instance --lang=${LANGUAGE}>/dev/null &
-  while pgrep -f "/firefox/firefox" > /dev/null
-  do
-    sleep 2
-  done
+  trickle -d ${BANDWIDTH} -u ${BANDWIDTH} /firefox/firefox ${URL} --display=:99 --profile /browser --P browser --setDefaultBrowser --new-instance --lang=${LANGUAGE}>/dev/null
 done

@@ -15,9 +15,5 @@ vncserver -geometry 1024x768 -depth 16 :99 -rfbport 5900 -noxstartup -securityty
 screen -d -m env HOME=/etc /usr/bin/fluxbox
 
 while true; do
-  /browserdata/start-tor-browser ${URL} --display=:99 --setDefaultBrowser --new-instance --lang=${LANGUAGE} &
-  while pgrep -f "/browserdata/start-tor-browser" > /dev/null
-  do
-    sleep 2
-  done
+  /browserdata/start-tor-browser ${URL} --display=:99 --setDefaultBrowser --new-instance --lang=${LANGUAGE}
 done

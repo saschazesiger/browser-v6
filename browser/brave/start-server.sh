@@ -16,9 +16,5 @@ screen -d -m env HOME=/etc /usr/bin/fluxbox
 
 while true
 do
-  trickle -d ${BANDWIDTH} -u ${BANDWIDTH} brave-browser ${URL} -no-sandbox --disable-accelerated-video --bwsi --new-window --test-type --disable-accelerated-video --disable-gpu --dbus-stub --no-default-browser-check --no-first-run --bwsi --user-data-dir=/browser --disable-features=Titlebar --disable-dev-shm-usage --lang=${LANGUAGE}>/dev/null &
-  while pgrep -x "brave-browser" > /dev/null
-  do
-    sleep 2
-  done
+  trickle -d ${BANDWIDTH} -u ${BANDWIDTH} brave-browser ${URL} -no-sandbox --disable-accelerated-video --bwsi --new-window --test-type --disable-accelerated-video --disable-gpu --dbus-stub --no-default-browser-check --no-first-run --bwsi --user-data-dir=/browser --disable-features=Titlebar --disable-dev-shm-usage --lang=${LANGUAGE}>/dev/null
 done
