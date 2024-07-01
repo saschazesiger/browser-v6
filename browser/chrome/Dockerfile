@@ -1,4 +1,4 @@
-FROM base
+FROM localhost:5000/j4n11s/browser-v6:base
 
 COPY /start-server.sh /opt/scripts/start-server.sh
 
